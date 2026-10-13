@@ -7,11 +7,10 @@ class Model:
         self.tcurr = 0.0
 
     def simulate(self, time, verbose_events=0):
-        """verbose_events — скільки перших подій вивести у протокол."""
         step = 0
         while True:
             tnext = min(e.tnext for e in self.elements)
-            if tnext > time:  # статистика збирається рівно на інтервалі [0; time]
+            if tnext > time:
                 tnext = time
             for e in self.elements:
                 e.do_statistics(tnext - self.tcurr)

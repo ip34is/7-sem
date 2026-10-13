@@ -1,9 +1,7 @@
 """Завдання 6: вихід у кілька наступних блоків і повернення у попередній блок.
-
 CREATE -> PROCESS 1 -> PROCESS 2 (0.6) -> DESPOSE
                     -> PROCESS 3 (0.4) -> DESPOSE (0.7)
-                                       -> PROCESS 1 (0.3, повернення)
-"""
+                                       -> PROCESS 1 (0.3, повернення)"""
 import fun_rand
 from create import Create
 from dispose import Dispose

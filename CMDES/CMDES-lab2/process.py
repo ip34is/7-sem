@@ -53,7 +53,6 @@ class Process(Element):
         return self.queue_area / time
 
     def mean_load(self, time):
-        """Середня частка зайнятих пристроїв."""
         return self.busy_area / time / self.channels
 
     def failure_probability(self):
