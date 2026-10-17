@@ -1,0 +1,18 @@
+%% Шаблон DFD у нотації Mermaid. Замініть на елементи своєї системи.
+flowchart LR
+    user([Користувач]):::ext
+    subgraph TB1[Межа довіри: застосунок]
+        web[Вебсервер]
+        app[Прикладна логіка]
+    end
+    subgraph TB2[Межа довіри: сховище]
+        db[(База даних)]
+    end
+    user -->|HTTPS запит| web
+    web --> app
+    app -->|SQL| db
+    db -->|дані| app
+    app -->|HTML| web
+    web -->|відповідь| user
+
+    classDef ext fill:#eee,stroke:#333;

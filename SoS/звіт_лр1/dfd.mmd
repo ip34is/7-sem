@@ -1,0 +1,53 @@
+%% DFD системи електронного документообігу кафедри (ЛР1, варіант 14).
+%% Зовнішні сутності — ([...]), процеси — [...], сховища — [(...)], потоки — підписані стрілки.
+flowchart TB
+    subgraph TB0[Недовірена зона: Інтернет]
+        staff([E1 Працівник кафедри]):::ext
+        student([E2 Здобувач]):::ext
+        admin([E3 Адміністратор СЕД]):::ext
+    end
+    subgraph TB1[Межа довіри: інфраструктура університету]
+        sso([E4 SSO університету, OIDC]):::ext
+        smtp([E5 Поштовий сервер]):::ext
+    end
+    subgraph TB2[Межа довіри: DMZ кафедри]
+        proxy[P1 Зворотний проксі Nginx, TLS]
+    end
+    subgraph TB3[Межа довіри: застосунок]
+        app[P2 Застосунок СЕД: API, маршрути, ACL]
+        worker[P3 Фоновий обробник: текст, прев'ю, індексація, сповіщення]
+    end
+    subgraph TB4[Межа довіри: зона даних]
+        db[(D1 БД PostgreSQL)]
+        files[(D2 Сховище файлів MinIO)]
+        idx[(D3 Пошуковий індекс OpenSearch)]
+        audit[(D4 Журнал аудиту та логи)]
+        bkp[P4 Резервне копіювання, cron]
+    end
+    subgraph TB5[Межа довіри: хмарний провайдер]
+        cloud[(D5 Резервні копії)]
+    end
+
+    TB0 -->|F1 HTTPS-запит: cookie, файли, резолюції| proxy
+    proxy -->|F2 HTTPS-відповідь: HTML/JSON, pre-signed URL| TB0
+    TB0 <-->|F5 OIDC: перенаправлення, вхід| sso
+    proxy -->|F3 HTTP: проксований запит| app
+    app -->|F4 HTTP: відповідь| proxy
+    app <-->|F6 OIDC: код → ID-токен| sso
+    app -->|F7 SQL-запит| db
+    db -->|F7 ПД, метадані, маршрути| app
+    app -->|F8 S3 API: PUT/GET файлів| files
+    proxy -->|F9 GET за pre-signed URL| files
+    files -->|F9 файл документа| proxy
+    app -->|F10 пошуковий запит| idx
+    idx -->|F10 результати + фрагменти| app
+    app -->|F11 завдання в черзі| worker
+    files -->|F12 файл для обробки| worker
+    worker -->|F13 витягнутий текст| idx
+    worker -->|F14 SMTP: сповіщення| smtp
+    app -->|F15 події аудиту, логи| audit
+    db -->|F16 pg_dump| bkp
+    files -->|F16 дзеркало бакета| bkp
+    bkp -->|F17 HTTPS/S3: архіви копій| cloud
+
+    classDef ext fill:#eee,stroke:#333;

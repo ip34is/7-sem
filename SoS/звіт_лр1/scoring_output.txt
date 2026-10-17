@@ -1,0 +1,47 @@
+ID   Ел.   S Вектор CVSS                          Бал Рівень    Зал. Ранг
+T-01 D3    I AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:L/A:L  8.6 високий    2.0    1 *
+T-02 P2    I AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N  6.5 середній   3.1    6
+T-03 P2    I AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N  4.3 середній   3.1   20
+T-04 D2    I AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N  7.5 високий    2.2    4 *
+T-05 F2    I AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:N/A:N  5.3 середній   3.1   14
+T-06 F14   I AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N  5.9 середній   3.7   11
+T-07 F3/F4 I AV:A/AC:H/PR:N/UI:N/S:U/C:H/I:L/A:N  5.9 середній   2.0   12
+T-08 P2    I AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:N  5.3 середній   3.7   15
+T-09 P3    I AV:N/AC:L/PR:L/UI:N/S:U/C:L/I:N/A:N  4.3 середній   3.1   21
+T-10 D4    I AV:L/AC:L/PR:H/UI:N/S:U/C:H/I:N/A:N  4.4 середній   1.9   19
+T-11 D5    I AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:N/A:N  5.9 середній   2.2   13
+T-12 D1    I AV:A/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:N  6.4 середній   3.1   10
+T-13 E1    S AV:N/AC:L/PR:L/UI:R/S:C/C:H/I:L/A:N  7.6 високий    3.7    3 *
+T-14 E4    S AV:N/AC:H/PR:N/UI:R/S:U/C:H/I:H/A:N  6.8 середній   3.1    5
+T-15 D2    T AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N  4.9 середній   2.2   17
+T-16 P2    T AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N  6.5 середній   3.1    7
+T-17 E1    R AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:N  4.3 середній   3.1   22
+T-18 D4    R AV:N/AC:L/PR:H/UI:N/S:U/C:N/I:H/A:N  4.9 середній   1.9   18
+T-19 P3    D AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:H  6.5 середній   4.3    8
+T-20 F1    D AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L  5.3 середній   5.3   16
+T-21 P3    E AV:N/AC:H/PR:L/UI:N/S:C/C:H/I:H/A:H  8.5 високий    5.0    2 *
+T-22 P2    E AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:N  6.5 середній   3.3    9
+* — загроза високого ризику (CVSS ≥ 7.0); Зал. — оцінка після контрзаходу
+
+Загрози за категоріями STRIDE (кількість, середня оцінка):
+  S Spoofing                 2  7.20  ##
+  T Tampering                2  5.70  ##
+  R Repudiation              2  4.60  ##
+  I Information disclosure  12  5.86  ############
+  D Denial of service        2  5.90  ##
+  E Elevation of privilege   2  7.50  ##
+Загрози за елементами DFD:
+  P2: 5, P3: 3, D2: 2, D4: 2, E1: 2, D3: 1, F2: 1, F14: 1, F3/F4: 1, D5: 1, D1: 1, E4: 1, F1: 1
+Середня базова оцінка: 6.00 → після контрзаходів: 3.10
+Загрози високого ризику (CVSS ≥ 7.0):
+  T-01 (8.6), T-21 (8.5), T-13 (7.6), T-04 (7.5)
+Найкритичніша загроза: T-01 (8.6)
+  Відкритий REST API пошукового індексу з повними текстами
+
+Самоперевірка:
+  [OK] загроз не менше 12
+  [OK] загроз високого ризику не менше 3
+  [OK] охоплено щонайменше 3 категорії STRIDE
+  [OK] пріоритетна категорія I переважає
+  [OK] залишкова оцінка не перевищує вихідну
+  [OK] контрольний вектор дає 9.8
