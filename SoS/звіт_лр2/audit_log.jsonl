@@ -1,0 +1,29 @@
+{"ts": 1792998300.0, "subject": "alice", "object": "hr01", "action": "READ", "allowed": true, "reason": "надано через роль head"}
+{"ts": 1792998600.0, "subject": "alice", "object": "grades01", "action": "WRITE", "allowed": true, "reason": "надано через роль head, head ← lecturer"}
+{"ts": 1792998720.0, "subject": "bob", "object": "order01", "action": "READ", "allowed": true, "reason": "надано через роль secretary ← employee"}
+{"ts": 1792998780.0, "subject": "bob", "object": "order02", "action": "WRITE", "allowed": true, "reason": "надано через роль secretary"}
+{"ts": 1792999200.0, "subject": "bob", "object": "protocol01", "action": "WRITE", "allowed": true, "reason": "надано через роль secretary"}
+{"ts": 1792999500.0, "subject": "carol", "object": "plan01", "action": "READ", "allowed": true, "reason": "надано через роль lecturer"}
+{"ts": 1792999560.0, "subject": "carol", "object": "plan01", "action": "WRITE", "allowed": true, "reason": "надано через роль lecturer"}
+{"ts": 1792999800.0, "subject": "carol", "object": "grades01", "action": "READ", "allowed": true, "reason": "надано через роль lecturer"}
+{"ts": 1793000100.0, "subject": "dave", "object": "plan02", "action": "READ", "allowed": true, "reason": "надано через роль lecturer, head ← lecturer"}
+{"ts": 1793000400.0, "subject": "erin", "object": "protocol02", "action": "READ", "allowed": true, "reason": "надано через роль lecturer ← employee"}
+{"ts": 1793000700.0, "subject": "frank", "object": "hr02", "action": "READ", "allowed": true, "reason": "надано через роль hr"}
+{"ts": 1793000760.0, "subject": "frank", "object": "hr02", "action": "WRITE", "allowed": true, "reason": "надано через роль hr"}
+{"ts": 1793001000.0, "subject": "grace", "object": "order01", "action": "READ", "allowed": true, "reason": "надано через роль student"}
+{"ts": 1793001120.0, "subject": "heidi", "object": "order01", "action": "READ", "allowed": true, "reason": "надано через роль student"}
+{"ts": 1793001300.0, "subject": "trent", "object": "hr03", "action": "READ", "allowed": true, "reason": "надано через роль auditor"}
+{"ts": 1793001420.0, "subject": "grace", "object": "order02", "action": "READ", "allowed": false, "reason": "явного дозволу немає (safe default)"}
+{"ts": 1793001900.0, "subject": "carol", "object": "grades01", "action": "WRITE", "allowed": true, "reason": "надано через роль lecturer"}
+{"ts": 1793003400.0, "subject": "mallory", "object": "grades01", "action": "READ", "allowed": false, "reason": "явного дозволу немає (safe default)"}
+{"ts": 1793003408.0, "subject": "mallory", "object": "grades02", "action": "READ", "allowed": false, "reason": "явного дозволу немає (safe default)"}
+{"ts": 1793003416.0, "subject": "mallory", "object": "grades03", "action": "READ", "allowed": false, "reason": "явного дозволу немає (safe default)"}
+{"ts": 1793003424.0, "subject": "mallory", "object": "grades04", "action": "READ", "allowed": false, "reason": "явного дозволу немає (safe default)"}
+{"ts": 1793003432.0, "subject": "mallory", "object": "grades05", "action": "READ", "allowed": false, "reason": "явного дозволу немає (safe default)"}
+{"ts": 1793003440.0, "subject": "mallory", "object": "grades06", "action": "READ", "allowed": false, "reason": "явного дозволу немає (safe default)"}
+{"ts": 1793005200.0, "subject": "dave", "object": "order04", "action": "DELETE", "allowed": true, "reason": "надано через роль head"}
+{"ts": 1793010600.0, "subject": "dave", "object": "order05", "action": "DELETE", "allowed": false, "reason": "тимчасове право неактивне — призначення ролі head: термін дії сплив 2026-10-26 12:00"}
+{"ts": 1793010660.0, "subject": "dave", "object": "order05", "action": "DELETE", "allowed": false, "reason": "тимчасове право неактивне — призначення ролі head: термін дії сплив 2026-10-26 12:00"}
+{"ts": 1793019600.0, "subject": "erin", "object": "grades02", "action": "WRITE", "allowed": true, "reason": "надано через роль lecturer"}
+{"ts": 1793025000.0, "subject": "erin", "object": "grades02", "action": "WRITE", "allowed": false, "reason": "тимчасове право неактивне — право lecturer на grades02: термін дії сплив 2026-10-26 16:00"}
+{"ts": 1793026800.0, "subject": "trent", "object": "order03", "action": "READ", "allowed": true, "reason": "надано через роль auditor"}

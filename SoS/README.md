@@ -2,11 +2,14 @@
 
 Скачков І. О., група ІП-34. Лабораторні роботи з дисципліни «Безпека програмного забезпечення» (КПІ ім. Ігоря Сікорського, ФІОТ).
 
-Папка `SoS` (Security of Software) монорепозиторію 7-sem. Структура повторює [репозиторій курсу](https://github.com/sokolusha/software-security-course): `common/variants.py` і `lab01_threat_model/cvss.py` скопійовано звідти без змін.
+Папка `SoS` (Security of Software) монорепозиторію 7-sem. Структура повторює [репозиторій курсу](https://github.com/sokolusha/software-security-course): `common/variants.py`, `lab01_threat_model/cvss.py` і каркас `lab02_access_control/accesscontrol`, `examples`, `tests/test_example.py` скопійовано звідти без змін.
 
 | № | Тема | Каталог | Звіт і артефакти |
 |---|------|---------|------------------|
 | 1 | Побудова моделі загроз програмного застосунку | `lab01_threat_model` | `звіт_лр1` |
+| 2 | Розроблення підсистеми розмежування доступу | `lab02_access_control` | `звіт_лр2` |
+
+У кожному `звіт_лрN` є PDF/DOCX звіту і `захист_лрN.md` — план відеозахисту та відповіді на контрольні запитання варіанта.
 
 ## ЛР1 — модель загроз СЕД кафедри
 
@@ -34,4 +37,21 @@ python scoring.py --md
 
 ```
 npx -p @mermaid-js/mermaid-cli mmdc -i звіт_лр1/dfd.mmd -o звіт_лр1/dfd.png -s 3 -b white
+```
+
+## ЛР2 — підсистема розмежування доступу
+
+Варіант 14: RBAC з ієрархією ролей, тимчасові права (D2), аномалії «сплеск відмов» (А1) і «використання прав, не задіяних раніше» (А5); 10 суб'єктів, 23 об'єкти.
+
+- `lab02_access_control/mypolicy.py` — `VariantPolicy` (RBAC + D2), операційний журнал, `DocumentService`;
+- `lab02_access_control/population.py` — ролі, суб'єкти, об'єкти та призначення;
+- `lab02_access_control/mydetector.py` — детектори А1 і А5;
+- `lab02_access_control/demo.py` — демонстрація всіх кроків; `tests/test_variant.py` — 29 тестів;
+- `звіт_лр2/scheme.mmd`, `scheme.png` — структурна схема; `demo_output.txt`, `pytest_output.txt`, `audit_log.jsonl`, `operation_log.jsonl`.
+
+```
+cd lab02_access_control
+pip install -r requirements.txt
+PYTHONPATH=. pytest tests/ -q        # 39 passed
+python demo.py --save ../звіт_лр2
 ```

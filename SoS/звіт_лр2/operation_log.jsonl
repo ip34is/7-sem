@@ -1,0 +1,108 @@
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_role", "target": "employee", "details": ""}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_role", "target": "student", "details": ""}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_role", "target": "auditor", "details": ""}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_role", "target": "lecturer", "details": ""}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_inheritance", "target": "lecturer", "details": "успадковує employee"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_role", "target": "secretary", "details": ""}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_inheritance", "target": "secretary", "details": "успадковує employee"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_role", "target": "hr", "details": ""}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_inheritance", "target": "hr", "details": "успадковує employee"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_role", "target": "head", "details": ""}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_inheritance", "target": "head", "details": "успадковує lecturer"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "add_inheritance", "target": "head", "details": "успадковує secretary"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order01", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order02", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order03", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order04", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order05", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol01", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol02", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol03", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol04", "details": "employee: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order01", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order02", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order03", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order04", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order05", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol01", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol02", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol03", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol04", "details": "secretary: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan01", "details": "lecturer: READ|WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan02", "details": "lecturer: READ|WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan03", "details": "lecturer: READ|WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan04", "details": "lecturer: READ|WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades01", "details": "lecturer: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades01", "details": "lecturer: WRITE [… – 2026-10-26 16:00)"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades01", "details": "head: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades02", "details": "lecturer: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades02", "details": "lecturer: WRITE [… – 2026-10-26 16:00)"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades02", "details": "head: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades03", "details": "lecturer: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades03", "details": "lecturer: WRITE [… – 2026-10-26 16:00)"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades03", "details": "head: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades04", "details": "lecturer: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades04", "details": "lecturer: WRITE [… – 2026-10-26 16:00)"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades04", "details": "head: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades05", "details": "lecturer: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades05", "details": "lecturer: WRITE [… – 2026-10-26 16:00)"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades05", "details": "head: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades06", "details": "lecturer: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades06", "details": "lecturer: WRITE [… – 2026-10-26 16:00)"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades06", "details": "head: WRITE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order01", "details": "head: DELETE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order02", "details": "head: DELETE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order03", "details": "head: DELETE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order04", "details": "head: DELETE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order05", "details": "head: DELETE"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr01", "details": "head: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr01", "details": "hr: ADMIN"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr02", "details": "head: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr02", "details": "hr: ADMIN"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr03", "details": "head: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr03", "details": "hr: ADMIN"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr04", "details": "head: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr04", "details": "hr: ADMIN"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order01", "details": "student: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order01", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order02", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order03", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order04", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "order05", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades01", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades02", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades03", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades04", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades05", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "grades06", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol01", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol02", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol03", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "protocol04", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan01", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan02", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan03", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "plan04", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr01", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr02", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr03", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "permit", "target": "hr04", "details": "auditor: READ"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "alice", "details": "роль head"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "bob", "details": "роль secretary"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "carol", "details": "роль lecturer"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "dave", "details": "роль lecturer"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "dave", "details": "роль head [2026-10-26 09:00 – 2026-10-26 12:00)"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "erin", "details": "роль lecturer"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "frank", "details": "роль hr"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "grace", "details": "роль student"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "heidi", "details": "роль student"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "mallory", "details": "роль student"}
+{"ts": 1792998000.0, "actor": "admin", "operation": "assign", "target": "trent", "details": "роль auditor"}
+{"ts": 1792998600.0, "actor": "alice", "operation": "write", "target": "grades01", "details": "довжина 22"}
+{"ts": 1792998780.0, "actor": "bob", "operation": "write", "target": "order02", "details": "довжина 21"}
+{"ts": 1792999200.0, "actor": "bob", "operation": "write", "target": "protocol01", "details": "довжина 24"}
+{"ts": 1792999560.0, "actor": "carol", "operation": "write", "target": "plan01", "details": "довжина 20"}
+{"ts": 1793000760.0, "actor": "frank", "operation": "write", "target": "hr02", "details": "довжина 18"}
+{"ts": 1793001900.0, "actor": "carol", "operation": "write", "target": "grades01", "details": "довжина 22"}
+{"ts": 1793005200.0, "actor": "dave", "operation": "delete", "target": "order04", "details": ""}
+{"ts": 1793019600.0, "actor": "erin", "operation": "write", "target": "grades02", "details": "довжина 22"}

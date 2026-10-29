@@ -1,0 +1,37 @@
+%% Структурна схема підсистеми розмежування доступу (ЛР2, варіант 14).
+flowchart TB
+    subj([Суб'єкти: alice … trent]):::ext
+    admin([Адміністратор політики]):::ext
+    subgraph svc[Підсистема документів]
+        ds[DocumentService<br/>read / write / delete]
+    end
+    subgraph tcb[Довірена обчислювальна база]
+        mon[ReferenceMonitor<br/>check / enforce]
+        pol[VariantPolicy.evaluate<br/>RBAC + D2]
+        ua[(UA: суб'єкт → роль<br/>з інтервалом дії)]
+        rh[(RH: ієрархія ролей)]
+        pa[(PA: роль → права на об'єкт<br/>з інтервалом дії)]
+        clk[Годинник]
+    end
+    docs[(Документи: 23 об'єкти)]
+    audit[(Реєстраційний журнал<br/>ClockedAuditLog)]
+    oplog[(Операційний журнал<br/>OperationLog)]
+    det[VariantDetector<br/>А1 сплеск відмов<br/>А5 нове право]
+
+    subj -->|запит операції| ds
+    ds -->|enforce s, o, a| mon
+    mon -->|evaluate| pol
+    pol --- ua
+    pol --- rh
+    pol --- pa
+    clk -->|поточний час| pol
+    mon -->|кожне рішення| audit
+    mon -->|Decision / PermissionError| ds
+    ds -->|лише після дозволу| docs
+    ds -->|виконані WRITE / DELETE| oplog
+    admin -->|assign, permit, revoke| pol
+    pol -->|зміни політики| oplog
+    audit -->|entries| det
+    det -->|сповіщення| admin
+
+    classDef ext fill:#eee,stroke:#333;
