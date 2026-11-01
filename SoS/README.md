@@ -2,12 +2,12 @@
 
 Скачков І. О., група ІП-34. Лабораторні роботи з дисципліни «Безпека програмного забезпечення» (КПІ ім. Ігоря Сікорського, ФІОТ).
 
-Папка `SoS` (Security of Software) монорепозиторію 7-sem. Структура повторює [репозиторій курсу](https://github.com/sokolusha/software-security-course): `common/variants.py`, `lab01_threat_model/cvss.py` і каркас `lab02_access_control/accesscontrol`, `examples`, `tests/test_example.py` скопійовано звідти без змін.
+Папка `SoS` (Security of Software) монорепозиторію 7-sem. Структура повторює [репозиторій курсу](https://github.com/sokolusha/software-security-course): `common/variants.py`, `lab01_threat_model/cvss.py` і каркас `lab02_access_control/accesscontrol`, `examples`, `tests/test_example.py` скопійовано звідти без змін. Кожна робота лежить у власній папці й запускається з неї незалежно від інших.
 
 | № | Тема | Каталог | Звіт і артефакти |
 |---|------|---------|------------------|
-| 1 | Побудова моделі загроз програмного застосунку | `lab01_threat_model` | `звіт_лр1` |
-| 2 | Розроблення підсистеми розмежування доступу | `lab02_access_control` | `звіт_лр2` |
+| 1 | Побудова моделі загроз програмного застосунку | `lab1/lab01_threat_model` | `lab1/звіт_лр1` |
+| 2 | Розроблення підсистеми розмежування доступу | `lab2/lab02_access_control` | `lab2/звіт_лр2` |
 
 У кожному `звіт_лрN` є PDF/DOCX звіту і `захист_лрN.md` — план відеозахисту та відповіді на контрольні запитання варіанта.
 
@@ -21,9 +21,10 @@
 - `lab01_threat_model/scoring.py` — 22 загрози з векторами CVSS, матриця «ймовірність × вплив», самоперевірка вимог варіанта;
 - `звіт_лр1/scoring_output.txt` — вивід `scoring.py`.
 
-Запуск (Python 3.11+):
+Запуск (Python 3.11+) з папки `lab1`:
 
 ```
+cd lab1
 python -m common.variants 14 --lab 1
 cd lab01_threat_model
 python cvss.py "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
@@ -33,7 +34,7 @@ python scoring.py --md
 
 `scoring.py` завершується з кодом 1, якщо порушено хоч одну вимогу варіанта (не менше 12 загроз, 3 загроз високого ризику тощо).
 
-Діаграми перерендерюються з `.mmd` утилітою [mermaid-cli](https://github.com/mermaid-js/mermaid-cli):
+Діаграми перерендерюються з `.mmd` утилітою [mermaid-cli](https://github.com/mermaid-js/mermaid-cli) (з папки `lab1`):
 
 ```
 npx -p @mermaid-js/mermaid-cli mmdc -i звіт_лр1/dfd.mmd -o звіт_лр1/dfd.png -s 3 -b white
@@ -50,6 +51,8 @@ npx -p @mermaid-js/mermaid-cli mmdc -i звіт_лр1/dfd.mmd -o звіт_лр1/
 - `звіт_лр2/scheme.mmd`, `scheme.png` — структурна схема; `demo_output.txt`, `pytest_output.txt`, `audit_log.jsonl`, `operation_log.jsonl`.
 
 ```
+cd lab2
+python -m common.variants 14 --lab 2
 cd lab02_access_control
 pip install -r requirements.txt
 PYTHONPATH=. pytest tests/ -q        # 39 passed
