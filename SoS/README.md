@@ -8,6 +8,7 @@
 |---|------|---------|------------------|
 | 1 | Побудова моделі загроз програмного застосунку | `lab1/lab01_threat_model` | `lab1/звіт_лр1` |
 | 2 | Розроблення підсистеми розмежування доступу | `lab2/lab02_access_control` | `lab2/звіт_лр2` |
+| 3 | Розроблення підсистеми ідентифікації та автентифікації | `lab3/lab03_auth` | `lab3/звіт_лр3` |
 
 ## ЛР1 — модель загроз СЕД кафедри
 
@@ -55,4 +56,26 @@ cd lab02_access_control
 pip install -r requirements.txt
 PYTHONPATH=. pytest tests/ -q        # 39 passed
 python demo.py --save ../звіт_лр2
+```
+
+## ЛР3 — підсистема ідентифікації та автентифікації
+
+Варіант 14: bcrypt, одноразові коди відновлення, квота спроб у ковзному вікні; формула Андерсона для T = 120 діб, R = 12 спроб/хв, P = 1e-6.
+
+- `lab03_auth/auth/passwords.py` — `hash_password` / `verify_password` (bcrypt cost 12, сіль, перець через HMAC-SHA256);
+- `lab03_auth/auth/lockout.py` — квота 5 невдач за 15 хв;
+- `lab03_auth/auth/recovery.py` — 10 одноразових кодів відновлення (зберігаються лише HMAC-хеші);
+- `lab03_auth/auth/service.py` — вхід «пароль → код» зі спільною квотою;
+- `lab03_auth/demo.py` — розрахунок Андерсона, заміри часу, сценарії; `tests/test_variant.py` — 33 тести;
+- `звіт_лр3/scheme.mmd`, `scheme.png`, `anderson_plot.png`, `demo_output.txt`, `pytest_output.txt`.
+
+Перець задається змінною середовища `AUTH_PEPPER`; у тестах і демонстрації — лише тестове значення.
+
+```
+cd lab3
+python -m common.variants 14 --lab 3
+cd lab03_auth
+pip install -r requirements.txt
+PYTHONPATH=. pytest tests/ -q        # 33 passed
+python demo.py --plot ../звіт_лр3/anderson_plot.png
 ```

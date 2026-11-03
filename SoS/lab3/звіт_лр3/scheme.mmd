@@ -1,0 +1,38 @@
+%% Структурна схема підсистеми автентифікації (ЛР3, варіант 14).
+flowchart TB
+    user([Користувач: ім'я, пароль, код]):::ext
+    env[(AUTH_PEPPER<br/>змінна середовища)]
+    subgraph svc[Authenticator]
+        q1{lockout.is_allowed?}
+        vp[verify_password<br/>bcrypt cost 12 + перець<br/>фіктивний хеш для невідомого імені]
+        pend[очікує другий фактор]
+        q2{lockout.is_allowed?}
+        vc[RecoveryCodes.verify_and_consume<br/>HMAC-SHA256 + compare_digest<br/>використаний код видаляється]
+    end
+    users[(Облікові записи:<br/>bcrypt$2b$12$сіль$хеш)]
+    codes[(Хеші 10 кодів відновлення)]
+    lk[(SlidingWindowLockout<br/>≤ 5 невдач за 15 хв)]
+    locked([LOCKED])
+    bad1([BAD_CREDENTIALS])
+    bad2([BAD_CODE])
+    ok([OK — вхід виконано])
+
+    user -->|1. ім'я + пароль| q1
+    q1 -->|ні| locked
+    q1 -->|так| vp
+    vp --- users
+    env -.-> vp
+    vp -->|невдача: записати| lk
+    vp -->|невдача| bad1
+    vp -->|успіх| pend
+    user -->|2. код відновлення| q2
+    pend --> q2
+    q2 -->|ні| locked
+    q2 -->|так| vc
+    vc --- codes
+    env -.-> vc
+    vc -->|невдача: записати| lk
+    vc -->|невдача| bad2
+    vc -->|успіх: очистити лічильник| ok
+
+    classDef ext fill:#eee,stroke:#333;

@@ -1,0 +1,7 @@
+Варіант 14
+
+  LAB3
+    kdf: bcrypt
+    second_factor: одноразові коди відновлення
+    lockout: квота спроб у ковзному вікні
+    anderson: period_days=120, guesses_per_minute=12, max_probability=1e-06
