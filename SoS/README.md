@@ -9,6 +9,7 @@
 | 1 | Побудова моделі загроз програмного застосунку | `lab1/lab01_threat_model` | `lab1/звіт_лр1` |
 | 2 | Розроблення підсистеми розмежування доступу | `lab2/lab02_access_control` | `lab2/звіт_лр2` |
 | 3 | Розроблення підсистеми ідентифікації та автентифікації | `lab3/lab03_auth` | `lab3/звіт_лр3` |
+| 4 | Дослідження та реалізація криптографічних механізмів | `lab4/lab04_crypto` | `lab4/звіт_лр4` |
 
 ## ЛР1 — модель загроз СЕД кафедри
 
@@ -78,4 +79,26 @@ cd lab03_auth
 pip install -r requirements.txt
 PYTHONPATH=. pytest tests/ -q        # 33 passed
 python demo.py --plot ../звіт_лр3/anderson_plot.png
+```
+
+## ЛР4 — криптографічні механізми
+
+Варіант 14: AES-128-GCM, RSA-PSS (2048), навчальний RSA з 28-бітовими множниками; помилки «ECB замість AEAD» і «хешування пароля без солі».
+
+- `lab04_crypto/crypto_lab/aead.py` — AES-128-GCM: випадковий 96-бітовий nonce, асоційовані дані, ліміт повідомлень на ключ;
+- `lab04_crypto/crypto_lab/misuse_ecb.py` — ECB: повтори блоків, зображення, атака перестановкою блоків;
+- `lab04_crypto/crypto_lab/misuse_hash.py` — SHA-256 без солі проти scrypt із сіллю;
+- `lab04_crypto/crypto_lab/sign_demo.py` — підпис і перевірка RSA-PSS 2048;
+- `lab04_crypto/crypto_lab/rsa_analysis.py` — факторизація (перебір, ρ-метод Полларда), кількість множень;
+- `lab04_crypto/demo.py` — усі кроки роботи; `tests/test_variant.py` — 26 тестів (разом з еталонними — 32);
+- `звіт_лр4/factor_time.png`, `ecb_image.png`, `demo_output.txt`, `pytest_output.txt`.
+
+```
+cd lab4
+python -m common.variants 14 --lab 4
+cd lab04_crypto
+python -m pip install -r requirements.txt
+PYTHONPATH=. pytest tests/ -q        # 32 passed
+python demo.py --figs ../звіт_лр4
+python -m crypto_lab.sign_demo
 ```

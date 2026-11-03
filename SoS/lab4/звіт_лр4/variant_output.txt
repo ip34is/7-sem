@@ -1,0 +1,9 @@
+Варіант 14
+
+  LAB4
+    aead: AES-128-GCM
+    signature: RSA-PSS (2048)
+    rsa_demo_bits: 28
+    misuse_to_demonstrate:
+      – режим ECB замість AEAD
+      – хешування пароля без солі
