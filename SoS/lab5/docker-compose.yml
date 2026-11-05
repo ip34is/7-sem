@@ -1,0 +1,31 @@
+# Стенд ЛР5: навмисно вразливий застосунок + внутрішня служба (ціль SSRF).
+# Порт vulnapp публікується ВИКЛЮЧНО на 127.0.0.1. internal портів назовні не має.
+name: bpz-lab5
+
+services:
+  vulnapp:
+    build: ./lab05_vulnapp
+    container_name: bpz-vulnapp
+    ports:
+      - "127.0.0.1:${VULNAPP_PORT:-8080}:5000"
+    environment:
+      VULNAPP_SECRET: ${VULNAPP_SECRET:-dev-secret}
+      VARIANT: ${VARIANT:-14}
+    networks:
+      - bpz-isolated
+    restart: "no"
+
+  internal:
+    build: ./lab05_vulnapp
+    container_name: bpz-internal
+    command: ["python", "internal.py"]
+    environment:
+      VARIANT: ${VARIANT:-14}
+    networks:
+      - bpz-isolated
+    restart: "no"
+
+networks:
+  bpz-isolated:
+    driver: bridge
+    internal: false

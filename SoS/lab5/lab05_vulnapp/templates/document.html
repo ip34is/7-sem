@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ doc['title'] }}</h1>
+<p><em>Гриф: {{ doc['classification'] }} · власник: {{ doc['owner_id'] }}</em></p>
+<p>{{ doc['body'] }}</p>
+<h2>Коментарі</h2>
+{# ВРАЗЛИВІСТЬ (CWE-79): збережений XSS — тіло коментаря виводиться без екранування. #}
+<ul>
+  {% for c in doc_comments %}<li>{{ c['body']|safe }}</li>{% endfor %}
+</ul>
+<form method="post" action="{{ url_for('comment', doc_id=doc['id']) }}">
+  <p><textarea name="text" rows="3" cols="60"></textarea></p>
+  <p><button type="submit">Додати</button></p>
+</form>
+{% endblock %}

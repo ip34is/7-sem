@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Вхід</h1>
+{% if error %}<p class="err">{{ error }}</p>{% endif %}
+<form method="post">
+  <p><label>Логін <input name="login" autocomplete="username"></label></p>
+  <p><label>Пароль <input name="password" type="password" autocomplete="current-password"></label></p>
+  <p><button type="submit">Увійти</button></p>
+</form>
+{% endblock %}

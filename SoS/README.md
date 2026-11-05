@@ -10,6 +10,7 @@
 | 2 | Розроблення підсистеми розмежування доступу | `lab2/lab02_access_control` | `lab2/звіт_лр2` |
 | 3 | Розроблення підсистеми ідентифікації та автентифікації | `lab3/lab03_auth` | `lab3/звіт_лр3` |
 | 4 | Дослідження та реалізація криптографічних механізмів | `lab4/lab04_crypto` | `lab4/звіт_лр4` |
+| 5 | Виявлення та усунення вразливостей за OWASP Top 10 | `lab5/lab05_vulnapp` | `lab5/звіт_лр5` |
 
 ## ЛР1 — модель загроз СЕД кафедри
 
@@ -101,4 +102,25 @@ python -m pip install -r requirements.txt
 PYTHONPATH=. pytest tests/ -q        # 32 passed
 python demo.py --figs ../звіт_лр4
 python -m crypto_lab.sign_demo
+```
+
+## ЛР5 — вразливості за OWASP Top 10
+
+Варіант 14: п'ять вразливостей у навчальному застосунку «Документообіг» — SQL-ін'єкція (CWE-89, /login), відображений XSS (CWE-79, /search), CSRF (CWE-352, /profile), IDOR (CWE-639, /document/<id>), відсутність перевірки прав (CWE-862, /admin/users). Кожну підтверджено, усунено й закрито регресійним тестом.
+
+Потрібен Docker. Стенд публікується **лише** на `127.0.0.1:8080`; внутрішня служба портів назовні не має.
+
+- `lab05_vulnapp/app.py`, `templates/` — виправлений застосунок (маркери `ВИПРАВЛЕНО N`);
+- `lab05_vulnapp/test_regression.py` — 5 регресійних тестів (requests + pytest);
+- `docker-compose.yml`, `.env.example` — опис стенда;
+- `звіт_лр5/proof_*.png` — докази експлуатації (форма Д1), `scheme.png`, `pytest_before.txt`, `pytest_after.txt`, `compose_ps.txt`.
+
+```
+cd lab5
+cp .env.example .env
+docker compose up -d --build         # 127.0.0.1:8080
+python -m venv .venv && .venv/Scripts/pip install requests pytest
+cd lab05_vulnapp
+PYTHONPATH=. ../.venv/Scripts/python -m pytest -q test_regression.py   # 5 passed
+docker compose down -v
 ```

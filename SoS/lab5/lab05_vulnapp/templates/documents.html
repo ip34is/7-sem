@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Мої документи</h1>
+<table>
+  <tr><th>№</th><th>Назва</th><th>Гриф</th></tr>
+  {% for d in documents %}
+  <tr>
+    <td>{{ d['id'] }}</td>
+    <td><a href="{{ url_for('document', doc_id=d['id']) }}">{{ d['title'] }}</a></td>
+    <td>{{ d['classification'] }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}

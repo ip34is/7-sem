@@ -1,0 +1,6 @@
+PASSED test_regression.py::test_v1_sql_injection_login_bypass
+PASSED test_regression.py::test_v3_reflected_xss_search
+PASSED test_regression.py::test_v4_csrf_profile_update
+PASSED test_regression.py::test_v5_idor_document
+PASSED test_regression.py::test_v10_admin_requires_authorization
+5 passed in 0.86s

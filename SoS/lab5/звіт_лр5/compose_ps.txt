@@ -1,0 +1,3 @@
+NAME           STATUS              PORTS
+bpz-internal   Up 8 minutes        5000-5001/tcp
+bpz-vulnapp    Up About a minute   127.0.0.1:8080->5000/tcp

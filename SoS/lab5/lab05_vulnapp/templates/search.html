@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Пошук документів</h1>
+<form method="get">
+  <input name="q" value="{{ q }}"> <button type="submit">Знайти</button>
+</form>
+{# ВИПРАВЛЕНО В3 (CWE-79): без |safe Jinja2 автоматично екранує рядок запиту,
+   тому теги у відповіді стають текстом, а не виконуваним HTML. #}
+<p>Результати за запитом: {{ q }}</p>
+<table>
+  <tr><th>№</th><th>Назва</th></tr>
+  {% for d in documents %}
+  <tr><td>{{ d['id'] }}</td><td><a href="{{ url_for('document', doc_id=d['id']) }}">{{ d['title'] }}</a></td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

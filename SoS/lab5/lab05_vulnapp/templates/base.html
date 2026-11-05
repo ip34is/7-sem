@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <title>Документообіг (навчальний стенд)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem auto; max-width: 52rem; line-height: 1.5; }
+    nav a { margin-right: 1rem; }
+    .warn { background: #fee; border-left: 4px solid #c00; padding: .6rem 1rem; margin-bottom: 1.5rem; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: .4rem .6rem; text-align: left; }
+    .err { color: #c00; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="warn">
+    <strong>Навчальний стенд із навмисними вразливостями.</strong>
+    Використовувати лише в ізольованому середовищі лабораторної роботи 5.
+    Дані синтетичні.
+  </div>
+  <nav>
+    <a href="{{ url_for('index') }}">Головна</a>
+    <a href="{{ url_for('documents') }}">Документи</a>
+    <a href="{{ url_for('search') }}">Пошук</a>
+    <a href="{{ url_for('profile') }}">Профіль</a>
+    {% if user %}<a href="{{ url_for('logout') }}">Вийти ({{ user['login'] }})</a>
+    {% else %}<a href="{{ url_for('login') }}">Увійти</a>{% endif %}
+  </nav>
+  <hr>
+  {% block content %}{% endblock %}
+</body>
+</html>

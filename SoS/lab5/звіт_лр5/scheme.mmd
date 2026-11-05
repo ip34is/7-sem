@@ -1,0 +1,13 @@
+%% Логічна схема ізольованого стенда ЛР5.
+flowchart LR
+    host([Хост: curl / pytest / браузер]):::ext
+    subgraph net[Мережа Docker bpz-isolated]
+        vulnapp["bpz-vulnapp<br/>Flask, порт 5000<br/>5 вразливостей варіанта"]
+        internal["bpz-internal<br/>Flask, порт 5001<br/>внутрішня служба"]
+    end
+    host -->|"127.0.0.1:8080 → :5000<br/>(лише петльовий інтерфейс)"| vulnapp
+    vulnapp -.->|"http://internal:5001<br/>(лише в мережі стенда)"| internal
+    internal -. "портів назовні немає" .-> x[ ]:::hidden
+
+    classDef ext fill:#eee,stroke:#333;
+    classDef hidden fill:#fff,stroke:#fff;
