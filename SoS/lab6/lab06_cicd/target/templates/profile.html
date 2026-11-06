@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Профіль</h1>
+{# ВРАЗЛИВІСТЬ (CWE-352): форма зміни стану без синхронізованого токена. #}
+<form method="post">
+  <p><label>ПІБ <input name="full_name" value="{{ user['full_name'] }}"></label></p>
+  <p><label>Пошта <input name="email" value="{{ user['email'] }}"></label></p>
+  <p><button type="submit">Зберегти</button></p>
+</form>
+{% endblock %}

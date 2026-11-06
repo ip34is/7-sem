@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Користувачі (адміністрування)</h1>
+<table>
+  <tr><th>№</th><th>Логін</th><th>ПІБ</th><th>Пошта</th><th>Роль</th></tr>
+  {% for u in users %}
+  <tr><td>{{ u['id'] }}</td><td>{{ u['login'] }}</td><td>{{ u['full_name'] }}</td>
+      <td>{{ u['email'] }}</td><td>{{ u['role'] }}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

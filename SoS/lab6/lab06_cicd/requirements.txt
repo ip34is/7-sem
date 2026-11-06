@@ -1,0 +1,5 @@
+bandit==1.7.10
+semgrep==1.86.0
+pip-audit==2.7.3
+cyclonedx-bom==4.6.1
+setuptools==69.5.1

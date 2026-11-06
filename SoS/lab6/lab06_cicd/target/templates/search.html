@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Пошук документів</h1>
+<form method="get">
+  <input name="q" value="{{ q }}"> <button type="submit">Знайти</button>
+</form>
+{# ВРАЗЛИВІСТЬ (CWE-79): фільтр |safe вимикає екранування — відображений XSS. #}
+<p>Результати за запитом: {{ q|safe }}</p>
+<table>
+  <tr><th>№</th><th>Назва</th></tr>
+  {% for d in documents %}
+  <tr><td>{{ d['id'] }}</td><td><a href="{{ url_for('document', doc_id=d['id']) }}">{{ d['title'] }}</a></td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

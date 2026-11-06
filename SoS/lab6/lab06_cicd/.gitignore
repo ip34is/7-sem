@@ -1,0 +1,7 @@
+# Звіти генерує конвеєр; підсумкові копії — у ../звіт_лр6/artifacts/
+bandit.json
+semgrep.json
+pip-audit.json
+sbom.json
+gitleaks.json
+sca_cvss.json

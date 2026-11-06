@@ -1,0 +1,79 @@
+# Приклади власних правил Semgrep (лекція 14). Здобувач додає правило свого варіанта.
+rules:
+  - id: python-eval-untrusted
+    languages: [python]
+    severity: ERROR
+    message: Виклик eval() на потенційно недовірених даних (CWE-95).
+    patterns:
+      - pattern: eval(...)
+
+  - id: python-md5-for-password
+    languages: [python]
+    severity: WARNING
+    message: MD5/SHA-1 непридатні для зберігання паролів (CWE-916). Використайте Argon2id.
+    patterns:
+      - pattern-either:
+          - pattern: hashlib.md5(...)
+          - pattern: hashlib.sha1(...)
+
+  - id: python-subprocess-shell-true
+    languages: [python]
+    severity: ERROR
+    message: subprocess із shell=True на змінних даних — ін'єкція команди ОС (CWE-78).
+    patterns:
+      - pattern: subprocess.run(..., shell=True, ...)
+
+  # ── Власні правила варіанта 14 (Скачков І. О.) ──────────────────────────────
+  # Обидва покривають класи вразливостей мого варіанта ЛР5, яких не бачить реєстр p/python.
+
+  # Головне правило: адміністративний маршрут Flask без перевірки ролі (CWE-862).
+  # Відсутність перевірки прав — вада логіки, а не «небезпечна функція», тому загальні
+  # правила її не знаходять. Правило кодує конвенцію проєкту: обробник маршруту /admin...
+  # має отримати current_user() і перевірити роль (user["role"]).
+  - id: skachkov-flask-admin-route-without-authz
+    languages: [python]
+    severity: ERROR
+    message: >-
+      Адміністративний маршрут Flask без перевірки прав (CWE-862, OWASP A01:2021):
+      обробник не перевіряє роль поточного користувача, тож маршрут доступний будь-кому.
+      Отримайте user = current_user() і поверніть 302/403, якщо user["role"] != "admin".
+    metadata:
+      cwe: "CWE-862: Missing Authorization"
+      owasp: "A01:2021 - Broken Access Control"
+      author: "Скачков І. О., варіант 14"
+    patterns:
+      - pattern: |
+          @app.route($PATH, ...)
+          def $FUNC(...):
+              ...
+      - metavariable-regex:
+          metavariable: $PATH
+          regex: ^["']/admin
+      - pattern-not: |
+          @app.route($PATH, ...)
+          def $FUNC(...):
+              ...
+              $USER = current_user()
+              ...
+              if <... $USER["role"] ...>:
+                  ...
+              ...
+      # Знахідку прив'язано до імені обробника: відбиток не змінюється, коли редагують тіло.
+      - focus-metavariable: $FUNC
+
+  # Допоміжне правило: фільтр |safe у шаблонах Jinja2 вимикає автоекранування (CWE-79).
+  # Реєстр p/python шаблонів .html не аналізує, тому відображений і збережений XSS ЛР5
+  # без цього правила лишаються невидимими.
+  - id: skachkov-jinja-safe-filter
+    languages: [regex]
+    severity: WARNING
+    message: >-
+      Фільтр |safe вимикає автоекранування Jinja2 — вихід без екранування дає XSS
+      (CWE-79, OWASP A03:2021). Приберіть |safe або екрануйте значення під контекст виводу.
+    metadata:
+      cwe: "CWE-79: Improper Neutralization of Input During Web Page Generation"
+      owasp: "A03:2021 - Injection"
+      author: "Скачков І. О., варіант 14"
+    paths:
+      include: ["*.html"]
+    pattern-regex: '\{\{[^}]*\|\s*safe\b[^}]*\}\}'

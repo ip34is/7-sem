@@ -1,0 +1,83 @@
+# Конвеєр контролю захищеності для лабораторної роботи 6 (варіант 14).
+# SAST: Semgrep + власні правила (rules/) і Bandit; критерій проходження —
+# блокувати складання за появи НОВИХ знахідок відносно базової лінії baseline.json.
+# Локально ті самі команди виконує run_local.py (Docker).
+name: security
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read   # мінімальні права токена (лекція 15)
+
+jobs:
+  sast:
+    name: Статичний аналіз (SAST) + quality gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Встановлення інструментів (закріплені версії)
+        run: pip install -r requirements.txt
+      # Ціль SAST — каталог target/ із копією застосунку ЛР5.
+      # `|| true`: сканер лише формує звіт; рішення ухвалює gate.py (fail closed).
+      - name: Bandit
+        run: bandit -r target -f json -o bandit.json -q || true
+      - name: Semgrep (власні правила + реєстр p/python)
+        run: >-
+          semgrep --metrics=off --disable-version-check
+          --config rules/ --config p/python
+          --json --output semgrep.json target || true
+      # Варіант 14: нові знахідки відносно baseline.json → ненульовий код → стадія червона.
+      - name: Quality gate (нові знахідки відносно базової лінії)
+        run: python gate.py
+      - name: Звіти SAST
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sast-reports
+          path: |
+            bandit.json
+            semgrep.json
+
+  sca:
+    name: Аналіз складу ПЗ (SCA) та SBOM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Встановлення інструментів (закріплені версії)
+        run: pip install -r requirements.txt
+      # Ціль SCA — навчальний перелік залежностей audit_target.txt.
+      - name: Пошук уразливих залежностей
+        run: |
+          pip-audit -r audit_target.txt || true
+          pip-audit -r audit_target.txt -f json -o pip-audit.json || true
+      - name: Формування SBOM (CycloneDX)
+        run: cyclonedx-py requirements audit_target.txt -o sbom.json || true
+      - name: Звіти SCA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sca-reports
+          path: |
+            pip-audit.json
+            sbom.json
+
+  secrets:
+    name: Сканування секретів
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # уся історія: секрет у будь-якому коміті вважається скомпрометованим
+      - name: gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
