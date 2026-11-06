@@ -221,7 +221,10 @@ def admin_users():
 @app.route("/admin/export")
 def admin_export():
     # НОВА ЗМІНА (ЛР6, демонстрація критерію): вивантаження реєстру всіх документів
-    # для адміністратора — але без перевірки прав (регресія класу CWE-862).
+    # для адміністратора. ВИПРАВЛЕНО: явна перевірка прав (CWE-862) — лише роль admin.
+    user = current_user()
+    if user is None or user["role"] != "admin":
+        return "Недостатньо прав", 403
     rows = db().execute(
         "SELECT id, owner_id, title, classification FROM documents ORDER BY id"
     ).fetchall()
