@@ -1,0 +1,130 @@
+{
+  "criterion": "new findings vs baseline (variant 14)",
+  "total": 32,
+  "findings": [
+    {
+      "fingerprint": "bandit|B104|target/app.py|app.run(host=\"0.0.0.0\", port=5000, debug=False) # noqa: S104",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B104|target/internal.py|app.run(host=\"0.0.0.0\", port=5001)",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B108|target/app.py|DB_PATH = os.environ.get(\"VULNAPP_DB\", \"/tmp/vulnapp.db\")",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B108|target/seed.py|path = os.environ.get(\"VULNAPP_DB\", \"/tmp/vulnapp.db\")",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B301|target/app.py|data = pickle.loads(base64.b64decode(raw)) # noqa: S301",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B310|target/app.py|with urllib.request.urlopen(url, timeout=3) as resp: # noqa: S310",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B324|target/app.py|return hashlib.md5(password.encode()).hexdigest() # noqa: S324",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B324|target/seed.py|(login, hashlib.md5(password.encode()).hexdigest(), name, email, role),",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B403|target/app.py|import pickle # noqa: S403 — навмисно вразливе, див. маршрут /prefs",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B404|target/app.py|import subprocess # noqa: S404 — навмисно вразливе, див. маршрут /admin/ping",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B602|target/app.py|f\"ping -c 1 {host}\", shell=True, capture_output=True, text=True, timeout=5",
+      "count": 1
+    },
+    {
+      "fingerprint": "bandit|B608|target/app.py|\"SELECT * FROM users WHERE login = '\" + login_name + \"'\"",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|avoid_app_run_with_bad_host|target/app.py|app.run(host=\"0.0.0.0\", port=5000, debug=False) # noqa: S104",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|avoid_app_run_with_bad_host|target/internal.py|app.run(host=\"0.0.0.0\", port=5001)",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|dangerous-subprocess-use|target/app.py|f\"ping -c 1 {host}\", shell=True, capture_output=True, text=True, timeout=5",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|directly-returned-format-string|target/app.py|return f\"<pre>{out.stdout}{out.stderr}</pre>\"",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|insecure-hash-algorithm-md5|target/app.py|return hashlib.md5(password.encode()).hexdigest() # noqa: S324",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|insecure-hash-algorithm-md5|target/seed.py|(login, hashlib.md5(password.encode()).hexdigest(), name, email, role),",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|md5-used-as-password|target/app.py|return hashlib.md5(password.encode()).hexdigest() # noqa: S324",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|md5-used-as-password|target/seed.py|(login, hashlib.md5(password.encode()).hexdigest(), name, email, role),",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|python-md5-for-password|target/app.py|return hashlib.md5(password.encode()).hexdigest() # noqa: S324",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|python-md5-for-password|target/seed.py|(login, hashlib.md5(password.encode()).hexdigest(), name, email, role),",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|python-subprocess-shell-true|target/app.py|out = subprocess.run( # noqa: S602 f\"ping -c 1 {host}\", shell=True, capture_output=True, text=True, timeout=5 )",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|raw-html-format|target/app.py|return f\"<pre>{out.stdout}{out.stderr}</pre>\"",
+      "count": 2
+    },
+    {
+      "fingerprint": "semgrep|skachkov-flask-admin-route-without-authz|target/app.py|def admin_ping():",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|skachkov-flask-admin-route-without-authz|target/app.py|def admin_users():",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|skachkov-jinja-safe-filter|target/templates/document.html|{% for c in doc_comments %}<li>{{ c['body']|safe }}</li>{% endfor %}",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|skachkov-jinja-safe-filter|target/templates/search.html|<p>Результати за запитом: {{ q|safe }}</p>",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|subprocess-injection|target/app.py|out = subprocess.run( # noqa: S602 f\"ping -c 1 {host}\", shell=True, capture_output=True, text=True, timeout=5 )",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|subprocess-shell-true|target/app.py|f\"ping -c 1 {host}\", shell=True, capture_output=True, text=True, timeout=5",
+      "count": 1
+    },
+    {
+      "fingerprint": "semgrep|tainted-sql-string|target/app.py|query = ( \"SELECT * FROM users WHERE login = '\" + login_name + \"'\" \" AND password_hash = '\" + _weak_hash(password) + \"'\" )",
+      "count": 1
+    }
+  ]
+}
