@@ -218,6 +218,16 @@ def admin_users():
     return render_template("admin_users.html", user=current_user(), users=rows)
 
 
+@app.route("/admin/export")
+def admin_export():
+    # НОВА ЗМІНА (ЛР6, демонстрація критерію): вивантаження реєстру всіх документів
+    # для адміністратора — але без перевірки прав (регресія класу CWE-862).
+    rows = db().execute(
+        "SELECT id, owner_id, title, classification FROM documents ORDER BY id"
+    ).fetchall()
+    return {"documents": [dict(r) for r in rows]}
+
+
 @app.route("/admin/ping")
 def admin_ping():
     host = request.args.get("host", "127.0.0.1")
