@@ -11,6 +11,7 @@
 | 3 | Розроблення підсистеми ідентифікації та автентифікації | `lab3/lab03_auth` | `lab3/звіт_лр3` |
 | 4 | Дослідження та реалізація криптографічних механізмів | `lab4/lab04_crypto` | `lab4/звіт_лр4` |
 | 5 | Виявлення та усунення вразливостей за OWASP Top 10 | `lab5/lab05_vulnapp` | `lab5/звіт_лр5` |
+| 6 | Автоматизований контроль захищеності у конвеєрі CI/CD | `lab6/lab06_cicd` | `lab6/звіт_лр6` |
 
 ## ЛР1 — модель загроз СЕД кафедри
 
@@ -123,4 +124,24 @@ python -m venv .venv && .venv/Scripts/pip install requests pytest
 cd lab05_vulnapp
 PYTHONPATH=. ../.venv/Scripts/python -m pytest -q test_regression.py   # 5 passed
 docker compose down -v
+```
+
+## ЛР6 — контроль захищеності у конвеєрі CI/CD
+
+Варіант 14: SAST — Semgrep + власні правила; критерій проходження — блокувати за появи нових знахідок відносно базової лінії.
+
+- `lab06_cicd/.github/workflows/security.yml` — конвеєр: sast (Bandit, Semgrep, quality gate), sca (pip-audit, SBOM CycloneDX), secrets (gitleaks);
+- `lab06_cicd/rules/insecure_patterns.yml` — власні правила `skachkov-flask-admin-route-without-authz` (CWE-862) і `skachkov-jinja-safe-filter` (CWE-79);
+- `lab06_cicd/gate.py` — нові знахідки відносно `baseline.json` (відбиток без номера рядка, fail closed);
+- `lab06_cicd/run_local.py` — ті самі команди конвеєра локально в Docker; `sca_cvss.py` — оцінки CVSS з OSV;
+- `lab06_cicd/target/` — копія застосунку ЛР5 (ціль SAST, навмисно вразлива);
+- `звіт_лр6/` — схема конвеєра та логи трьох станів.
+
+Стани конвеєра (окремі коміти): `f175b5b` базова лінія → код 0; `a41e308` новий `/admin/export` без перевірки прав → код 1; `f69f2ad` перевірку ролі додано → код 0.
+Звіти сканерів (bandit.json, semgrep.json тощо) містять фрагменти вразливого коду, тому в репозиторій не додаються.
+
+```
+cd lab6/lab06_cicd
+python run_local.py              # потрібен Docker; код завершення = результат конвеєра
+python run_local.py --baseline   # перезаписати baseline.json
 ```

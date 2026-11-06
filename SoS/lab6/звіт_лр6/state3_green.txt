@@ -1,0 +1,20 @@
+$ git log -1 --oneline
+f69f2ad SoS-lab6: перевірка прав у /admin/export (стан «пропущено»)
+$ python run_local.py
+══════ sast: Bandit + Semgrep (власні правила + p/python) ══════
+══════ sast: Quality gate ══════
+Знахідок Semgrep: 20, Bandit: 12 (з них Bandit HIGH: 3); у базовій лінії: 32
+Нових знахідок відносно базової лінії: 0
+Quality gate: пройдено
+══════ sca: pip-audit + SBOM (CycloneDX) ══════
+Found 5 known vulnerabilities in 2 packages
+══════ secrets: gitleaks ══════
+7:54AM INF scan completed in 48.5ms
+7:54AM INF no leaks found
+══════ Підсумок конвеєра ══════
+  sast     ✓ пройдено (код 0)
+  sca      ✓ пройдено (код 0)
+  secrets  ✓ пройдено (код 0)
+Конвеєр: ЗЕЛЕНИЙ (код завершення 0)
+$ echo $?
+0

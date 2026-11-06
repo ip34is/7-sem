@@ -1,0 +1,20 @@
+$ git log -1 --oneline
+a41e308 SoS-lab6: новий маршрут /admin/export без перевірки прав (стан «заблоковано»)
+$ python run_local.py
+══════ sast: Bandit + Semgrep (власні правила + p/python) ══════
+══════ sast: Quality gate ══════
+Знахідок Semgrep: 21, Bandit: 12 (з них Bandit HIGH: 3); у базовій лінії: 32
+::error file=target/app.py,line=222::Нова знахідка semgrep/skachkov-flask-admin-route-without-authz [ERROR]: def admin_export():
+::error::Quality gate: 1 нових знахідок відносно базової лінії — складання заблоковано
+══════ sca: pip-audit + SBOM (CycloneDX) ══════
+Found 5 known vulnerabilities in 2 packages
+══════ secrets: gitleaks ══════
+7:53AM INF scan completed in 49.9ms
+7:53AM INF no leaks found
+══════ Підсумок конвеєра ══════
+  sast     ✗ ПРОВАЛ (код 1)
+  sca      ✓ пройдено (код 0)
+  secrets  ✓ пройдено (код 0)
+Конвеєр: ЗАБЛОКОВАНО (код завершення 1)
+$ echo $?
+1

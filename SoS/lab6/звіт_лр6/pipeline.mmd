@@ -1,0 +1,31 @@
+%% Схема конвеєра контролю захищеності ЛР6 (варіант 14).
+flowchart LR
+    commit([Коміт / pull request]):::ext
+    subgraph ci[security.yml — GitHub Actions або run_local.py]
+        direction TB
+        subgraph sast[sast]
+            bandit[Bandit 1.7.10] --> bj[(bandit.json)]
+            semgrep["Semgrep 1.86.0<br/>rules/ + p/python"] --> sj[(semgrep.json)]
+            bj --> gate{"gate.py<br/>нові знахідки<br/>відносно baseline.json"}
+            sj --> gate
+            base[(baseline.json<br/>окремий коміт)] --> gate
+        end
+        subgraph sca[sca]
+            pa[pip-audit 2.7.3] --> paj[(pip-audit.json)]
+            cdx[cyclonedx-py 4.6.1] --> sbom[(sbom.json)]
+        end
+        subgraph sec[secrets]
+            gl[gitleaks 8.18.4] --> glj[(gitleaks.json)]
+        end
+    end
+    commit --> bandit
+    commit --> semgrep
+    commit --> pa
+    commit --> cdx
+    commit --> gl
+    gate -->|"нових = 0 → код 0"| pass([Складання пропущено]):::ok
+    gate -->|"нових > 0 → код 1"| block([Складання заблоковано]):::bad
+
+    classDef ext fill:#eee,stroke:#333;
+    classDef ok fill:#e6f4ea,stroke:#2e7d32;
+    classDef bad fill:#fdecea,stroke:#c62828;
