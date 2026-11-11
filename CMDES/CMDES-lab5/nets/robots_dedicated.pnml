@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="RobotsDedicated" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>RobotsDedicated</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Free elements</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.8.1">
+        <petriObject contentVisible="true" index="0" modelId="free" name="Free elements" priority="0" x="0" y="0"/>
+      </toolspecific>
+      <place id="gen">
+        <name>
+          <text>генератор</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="-450" y="0"/>
+        </graphics>
+      </place>
+      <place id="readyA">
+        <name>
+          <text>деталь на пункті прибуття</text>
+        </name>
+        <graphics>
+          <position x="-150" y="0"/>
+        </graphics>
+      </place>
+      <place id="onM1">
+        <name>
+          <text>деталь на верстат 1</text>
+        </name>
+        <graphics>
+          <position x="450" y="0"/>
+        </graphics>
+      </place>
+      <place id="readyM1">
+        <name>
+          <text>оброблено на верстат 1</text>
+        </name>
+        <graphics>
+          <position x="750" y="0"/>
+        </graphics>
+      </place>
+      <place id="slotsM1">
+        <name>
+          <text>вільні місця верстат 1</text>
+        </name>
+        <initialMarking>
+          <text>3</text>
+        </initialMarking>
+        <graphics>
+          <position x="300" y="260"/>
+        </graphics>
+      </place>
+      <place id="onM2">
+        <name>
+          <text>деталь на верстат 2</text>
+        </name>
+        <graphics>
+          <position x="1350" y="0"/>
+        </graphics>
+      </place>
+      <place id="readyM2">
+        <name>
+          <text>оброблено на верстат 2</text>
+        </name>
+        <graphics>
+          <position x="1650" y="0"/>
+        </graphics>
+      </place>
+      <place id="slotsM2">
+        <name>
+          <text>вільні місця верстат 2</text>
+        </name>
+        <initialMarking>
+          <text>3</text>
+        </initialMarking>
+        <graphics>
+          <position x="1200" y="260"/>
+        </graphics>
+      </place>
+      <place id="stored">
+        <name>
+          <text>склад</text>
+        </name>
+        <graphics>
+          <position x="2250" y="0"/>
+        </graphics>
+      </place>
+      <place id="home1">
+        <name>
+          <text>робот 1 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="0" y="-180"/>
+        </graphics>
+      </place>
+      <place id="loaded1">
+        <name>
+          <text>робот 1 з деталлю</text>
+        </name>
+        <graphics>
+          <position x="150" y="0"/>
+        </graphics>
+      </place>
+      <place id="back1">
+        <name>
+          <text>робот 1 повертається</text>
+        </name>
+        <graphics>
+          <position x="300" y="-180"/>
+        </graphics>
+      </place>
+      <place id="home2">
+        <name>
+          <text>робот 2 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="900" y="-180"/>
+        </graphics>
+      </place>
+      <place id="loaded2">
+        <name>
+          <text>робот 2 з деталлю</text>
+        </name>
+        <graphics>
+          <position x="1050" y="0"/>
+        </graphics>
+      </place>
+      <place id="back2">
+        <name>
+          <text>робот 2 повертається</text>
+        </name>
+        <graphics>
+          <position x="1200" y="-180"/>
+        </graphics>
+      </place>
+      <place id="home3">
+        <name>
+          <text>робот 3 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1800" y="-180"/>
+        </graphics>
+      </place>
+      <place id="loaded3">
+        <name>
+          <text>робот 3 з деталлю</text>
+        </name>
+        <graphics>
+          <position x="1950" y="0"/>
+        </graphics>
+      </place>
+      <place id="back3">
+        <name>
+          <text>робот 3 повертається</text>
+        </name>
+        <graphics>
+          <position x="2100" y="-180"/>
+        </graphics>
+      </place>
+      <transition id="arrive">
+        <name>
+          <text>надходження</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>40.0</timeDelay>
+          <delayMeanValue>40.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="-300" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="procM1">
+        <name>
+          <text>обробка верстат 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>60.0</timeDelay>
+          <delayMeanValue>60.0</delayMeanValue>
+          <standardDeviation>10.0</standardDeviation>
+          <distribution>norm</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="600" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="procM2">
+        <name>
+          <text>обробка верстат 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>100.0</timeDelay>
+          <delayMeanValue>100.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1500" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="grab1">
+        <name>
+          <text>захоплення 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>8.0</timeDelay>
+          <delayMeanValue>8.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="0" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="carry1">
+        <name>
+          <text>переміщення і вивільнення 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>14.0</timeDelay>
+          <delayMeanValue>14.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="300" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="return1">
+        <name>
+          <text>повернення 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>6.0</timeDelay>
+          <delayMeanValue>6.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="150" y="-320"/>
+        </graphics>
+      </transition>
+      <transition id="grab2">
+        <name>
+          <text>захоплення 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>8.0</timeDelay>
+          <delayMeanValue>8.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="900" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="carry2">
+        <name>
+          <text>переміщення і вивільнення 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>15.0</timeDelay>
+          <delayMeanValue>15.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1200" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="return2">
+        <name>
+          <text>повернення 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>7.0</timeDelay>
+          <delayMeanValue>7.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="1050" y="-320"/>
+        </graphics>
+      </transition>
+      <transition id="grab3">
+        <name>
+          <text>захоплення 3</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>8.0</timeDelay>
+          <delayMeanValue>8.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1800" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="carry3">
+        <name>
+          <text>переміщення і вивільнення 3</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>13.0</timeDelay>
+          <delayMeanValue>13.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="2100" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="return3">
+        <name>
+          <text>повернення 3</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="1950" y="-320"/>
+        </graphics>
+      </transition>
+      <arc id="a1" source="gen" target="arrive">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a4" source="onM1" target="procM1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a6" source="onM2" target="procM2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a8" source="home1" target="grab1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a9" source="readyA" target="grab1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a11" source="slotsM1" target="grab1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a12" source="loaded1" target="carry1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a15" source="back1" target="return1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a17" source="home2" target="grab2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a18" source="readyM1" target="grab2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a20" source="slotsM2" target="grab2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a22" source="loaded2" target="carry2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a25" source="back2" target="return2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a27" source="home3" target="grab3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a28" source="readyM2" target="grab3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a31" source="loaded3" target="carry3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a34" source="back3" target="return3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a2" source="arrive" target="gen">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a3" source="arrive" target="readyA">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a5" source="procM1" target="readyM1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a7" source="procM2" target="readyM2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a10" source="grab1" target="loaded1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a13" source="carry1" target="onM1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a14" source="carry1" target="back1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a16" source="return1" target="home1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a19" source="grab2" target="loaded2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a21" source="grab2" target="slotsM1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a23" source="carry2" target="onM2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a24" source="carry2" target="back2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a26" source="return2" target="home2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a29" source="grab3" target="loaded3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a30" source="grab3" target="slotsM2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a32" source="carry3" target="stored">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a33" source="carry3" target="back3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a35" source="return3" target="home3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.8.1">
+      <petriObjectLinks/>
+    </toolspecific>
+  </net>
+</pnml>

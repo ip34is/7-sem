@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Fridges" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>Fridges</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Free elements</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.8.1">
+        <petriObject contentVisible="true" index="0" modelId="free" name="Free elements" priority="0" x="0" y="0"/>
+      </toolspecific>
+      <place id="gen">
+        <name>
+          <text>генератор попиту</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="0" y="0"/>
+        </graphics>
+      </place>
+      <place id="cust">
+        <name>
+          <text>покупець</text>
+        </name>
+        <graphics>
+          <position x="300" y="0"/>
+        </graphics>
+      </place>
+      <place id="stock">
+        <name>
+          <text>запас</text>
+        </name>
+        <initialMarking>
+          <text>72</text>
+        </initialMarking>
+        <graphics>
+          <position x="1080" y="-330"/>
+        </graphics>
+      </place>
+      <place id="sold">
+        <name>
+          <text>продано</text>
+        </name>
+        <graphics>
+          <position x="680" y="-130"/>
+        </graphics>
+      </place>
+      <place id="lostp">
+        <name>
+          <text>продаж не відбувся</text>
+        </name>
+        <graphics>
+          <position x="680" y="0"/>
+        </graphics>
+      </place>
+      <place id="backlog">
+        <name>
+          <text>невдоволений попит</text>
+        </name>
+        <graphics>
+          <position x="680" y="130"/>
+        </graphics>
+      </place>
+      <place id="short">
+        <name>
+          <text>нестача до рівня</text>
+        </name>
+        <graphics>
+          <position x="300" y="280"/>
+        </graphics>
+      </place>
+      <place id="timer">
+        <name>
+          <text>таймер перегляду</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="0" y="460"/>
+        </graphics>
+      </place>
+      <place id="check">
+        <name>
+          <text>перегляд запасу</text>
+        </name>
+        <graphics>
+          <position x="300" y="460"/>
+        </graphics>
+      </place>
+      <place id="mode">
+        <name>
+          <text>розміщення замовлення</text>
+        </name>
+        <graphics>
+          <position x="680" y="460"/>
+        </graphics>
+      </place>
+      <place id="skipped">
+        <name>
+          <text>переглядів без замовлення</text>
+        </name>
+        <graphics>
+          <position x="680" y="600"/>
+        </graphics>
+      </place>
+      <place id="ordered">
+        <name>
+          <text>замовлено</text>
+        </name>
+        <graphics>
+          <position x="680" y="280"/>
+        </graphics>
+      </place>
+      <place id="orders">
+        <name>
+          <text>розміщено замовлень</text>
+        </name>
+        <graphics>
+          <position x="1080" y="460"/>
+        </graphics>
+      </place>
+      <transition id="demand">
+        <name>
+          <text>попит</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>0.2</timeDelay>
+          <delayMeanValue>0.2</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="150" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="sell">
+        <name>
+          <text>продаж</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>2</priority>
+        </toolspecific>
+        <graphics>
+          <position x="481" y="-130"/>
+        </graphics>
+      </transition>
+      <transition id="lost">
+        <name>
+          <text>інший магазин</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+          <probability>0.8</probability>
+        </toolspecific>
+        <graphics>
+          <position x="481" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="back">
+        <name>
+          <text>повторне замовлення</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+          <probability>0.2</probability>
+        </toolspecific>
+        <graphics>
+          <position x="481" y="130"/>
+        </graphics>
+      </transition>
+      <transition id="fill">
+        <name>
+          <text>видача відкладених</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>3</priority>
+        </toolspecific>
+        <graphics>
+          <position x="882" y="-130"/>
+        </graphics>
+      </transition>
+      <transition id="review">
+        <name>
+          <text>перегляд</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>4.0</timeDelay>
+          <delayMeanValue>4.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="150" y="460"/>
+        </graphics>
+      </transition>
+      <transition id="decide">
+        <name>
+          <text>замовити</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>2</priority>
+        </toolspecific>
+        <graphics>
+          <position x="481" y="460"/>
+        </graphics>
+      </transition>
+      <transition id="skip">
+        <name>
+          <text>не замовляти</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+        </toolspecific>
+        <graphics>
+          <position x="481" y="600"/>
+        </graphics>
+      </transition>
+      <transition id="unit">
+        <name>
+          <text>замовлення одиниці</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>3</priority>
+        </toolspecific>
+        <graphics>
+          <position x="482" y="280"/>
+        </graphics>
+      </transition>
+      <transition id="deliver">
+        <name>
+          <text>доставка</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>3.0</timeDelay>
+          <delayMeanValue>3.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="880" y="280"/>
+        </graphics>
+      </transition>
+      <transition id="end">
+        <name>
+          <text>кінець замовлення</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+        </toolspecific>
+        <graphics>
+          <position x="881" y="460"/>
+        </graphics>
+      </transition>
+      <arc id="a1" source="gen" target="demand">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a4" source="cust" target="sell">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a5" source="stock" target="sell">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a8" source="cust" target="lost">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a10" source="cust" target="back">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a13" source="backlog" target="fill">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a14" source="stock" target="fill">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a16" source="timer" target="review">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a19" source="check" target="decide">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a20" source="short" target="decide">
+        <inscription>
+          <text>54</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a22" source="check" target="skip">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a24" source="short" target="unit">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a25" source="mode" target="unit">
+        <inscription>
+          <text>1</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a27" source="ordered" target="deliver">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a29" source="mode" target="end">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a2" source="demand" target="gen">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a3" source="demand" target="cust">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a6" source="sell" target="sold">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a7" source="sell" target="short">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a9" source="lost" target="lostp">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a11" source="back" target="backlog">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a12" source="back" target="short">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a15" source="fill" target="sold">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a17" source="review" target="timer">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a18" source="review" target="check">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a21" source="decide" target="mode">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a23" source="skip" target="skipped">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a26" source="unit" target="ordered">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a28" source="deliver" target="stock">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a30" source="end" target="orders">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.8.1">
+      <petriObjectLinks/>
+    </toolspecific>
+  </net>
+</pnml>

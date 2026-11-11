@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Servers" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>Servers</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Free elements</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.8.1">
+        <petriObject contentVisible="true" index="0" modelId="free" name="Free elements" priority="0" x="0" y="0"/>
+      </toolspecific>
+      <place id="gen">
+        <name>
+          <text>генератор запитів</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="-810" y="0"/>
+        </graphics>
+      </place>
+      <place id="req">
+        <name>
+          <text>запит</text>
+        </name>
+        <graphics>
+          <position x="-405" y="0"/>
+        </graphics>
+      </place>
+      <place id="db">
+        <name>
+          <text>вільні з'єднання з БД</text>
+        </name>
+        <initialMarking>
+          <text>10</text>
+        </initialMarking>
+        <graphics>
+          <position x="1520" y="0"/>
+        </graphics>
+      </place>
+      <place id="req_main">
+        <name>
+          <text>запит до сервера (головний)</text>
+        </name>
+        <graphics>
+          <position x="0" y="-220"/>
+        </graphics>
+      </place>
+      <place id="slots_main">
+        <name>
+          <text>вільні місця в черзі (головний)</text>
+        </name>
+        <initialMarking>
+          <text>1000</text>
+        </initialMarking>
+        <graphics>
+          <position x="405" y="-420"/>
+        </graphics>
+      </place>
+      <place id="queue_main">
+        <name>
+          <text>черга (головний)</text>
+        </name>
+        <graphics>
+          <position x="405" y="-220"/>
+        </graphics>
+      </place>
+      <place id="rejected_main">
+        <name>
+          <text>відмовлено (головний)</text>
+        </name>
+        <graphics>
+          <position x="405" y="-90"/>
+        </graphics>
+      </place>
+      <place id="threads_main">
+        <name>
+          <text>вільні потоки (головний)</text>
+        </name>
+        <initialMarking>
+          <text>16</text>
+        </initialMarking>
+        <graphics>
+          <position x="810" y="-420"/>
+        </graphics>
+      </place>
+      <place id="thread_main">
+        <name>
+          <text>запит у потоці (головний)</text>
+        </name>
+        <graphics>
+          <position x="810" y="-220"/>
+        </graphics>
+      </place>
+      <place id="cores_main">
+        <name>
+          <text>вільні ядра (головний)</text>
+        </name>
+        <initialMarking>
+          <text>8</text>
+        </initialMarking>
+        <graphics>
+          <position x="1110" y="-420"/>
+        </graphics>
+      </place>
+      <place id="computed_main">
+        <name>
+          <text>результат обчислено (головний)</text>
+        </name>
+        <graphics>
+          <position x="1215" y="-220"/>
+        </graphics>
+      </place>
+      <place id="done_main">
+        <name>
+          <text>відповідь надіслано (головний)</text>
+        </name>
+        <graphics>
+          <position x="1620" y="-220"/>
+        </graphics>
+      </place>
+      <place id="req_aux">
+        <name>
+          <text>запит до сервера (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="0" y="220"/>
+        </graphics>
+      </place>
+      <place id="slots_aux">
+        <name>
+          <text>вільні місця в черзі (допоміжний)</text>
+        </name>
+        <initialMarking>
+          <text>1000</text>
+        </initialMarking>
+        <graphics>
+          <position x="405" y="420"/>
+        </graphics>
+      </place>
+      <place id="queue_aux">
+        <name>
+          <text>черга (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="405" y="220"/>
+        </graphics>
+      </place>
+      <place id="rejected_aux">
+        <name>
+          <text>відмовлено (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="405" y="90"/>
+        </graphics>
+      </place>
+      <place id="threads_aux">
+        <name>
+          <text>вільні потоки (допоміжний)</text>
+        </name>
+        <initialMarking>
+          <text>8</text>
+        </initialMarking>
+        <graphics>
+          <position x="810" y="420"/>
+        </graphics>
+      </place>
+      <place id="thread_aux">
+        <name>
+          <text>запит у потоці (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="810" y="220"/>
+        </graphics>
+      </place>
+      <place id="cores_aux">
+        <name>
+          <text>вільні ядра (допоміжний)</text>
+        </name>
+        <initialMarking>
+          <text>4</text>
+        </initialMarking>
+        <graphics>
+          <position x="1110" y="420"/>
+        </graphics>
+      </place>
+      <place id="computed_aux">
+        <name>
+          <text>результат обчислено (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="1215" y="220"/>
+        </graphics>
+      </place>
+      <place id="done_aux">
+        <name>
+          <text>відповідь надіслано (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="1620" y="220"/>
+        </graphics>
+      </place>
+      <transition id="arrive">
+        <name>
+          <text>надходження запиту</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>10.0</timeDelay>
+          <delayMeanValue>10.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="-608" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="route_main">
+        <name>
+          <text>на головний сервер</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+          <probability>0.7</probability>
+        </toolspecific>
+        <graphics>
+          <position x="-201" y="-220"/>
+        </graphics>
+      </transition>
+      <transition id="enqueue_main">
+        <name>
+          <text>у чергу (головний)</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+        </toolspecific>
+        <graphics>
+          <position x="203" y="-220"/>
+        </graphics>
+      </transition>
+      <transition id="reject_main">
+        <name>
+          <text>відмова (головний)</text>
+        </name>
+        <graphics>
+          <position x="202" y="-90"/>
+        </graphics>
+      </transition>
+      <transition id="start_main">
+        <name>
+          <text>початок обробки (головний)</text>
+        </name>
+        <graphics>
+          <position x="608" y="-220"/>
+        </graphics>
+      </transition>
+      <transition id="compute_main">
+        <name>
+          <text>обчислення (головний)</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>80.0</timeDelay>
+          <delayMeanValue>80.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1013" y="-220"/>
+        </graphics>
+      </transition>
+      <transition id="save_main">
+        <name>
+          <text>запис у БД (головний)</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1418" y="-220"/>
+        </graphics>
+      </transition>
+      <transition id="route_aux">
+        <name>
+          <text>на допоміжний сервер</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+          <probability>0.3</probability>
+        </toolspecific>
+        <graphics>
+          <position x="-201" y="220"/>
+        </graphics>
+      </transition>
+      <transition id="enqueue_aux">
+        <name>
+          <text>у чергу (допоміжний)</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+        </toolspecific>
+        <graphics>
+          <position x="203" y="220"/>
+        </graphics>
+      </transition>
+      <transition id="reject_aux">
+        <name>
+          <text>відмова (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="202" y="90"/>
+        </graphics>
+      </transition>
+      <transition id="start_aux">
+        <name>
+          <text>початок обробки (допоміжний)</text>
+        </name>
+        <graphics>
+          <position x="608" y="220"/>
+        </graphics>
+      </transition>
+      <transition id="compute_aux">
+        <name>
+          <text>обчислення (допоміжний)</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>100.0</timeDelay>
+          <delayMeanValue>100.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1013" y="220"/>
+        </graphics>
+      </transition>
+      <transition id="save_aux">
+        <name>
+          <text>запис у БД (допоміжний)</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1418" y="220"/>
+        </graphics>
+      </transition>
+      <arc id="a1" source="gen" target="arrive">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a4" source="req" target="route_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a6" source="req_main" target="enqueue_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a7" source="slots_main" target="enqueue_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a9" source="req_main" target="reject_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a11" source="queue_main" target="start_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a12" source="threads_main" target="start_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a15" source="thread_main" target="compute_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a16" source="cores_main" target="compute_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a19" source="computed_main" target="save_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a20" source="db" target="save_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a24" source="req" target="route_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a26" source="req_aux" target="enqueue_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a27" source="slots_aux" target="enqueue_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a29" source="req_aux" target="reject_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a31" source="queue_aux" target="start_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a32" source="threads_aux" target="start_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a35" source="thread_aux" target="compute_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a36" source="cores_aux" target="compute_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a39" source="computed_aux" target="save_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a40" source="db" target="save_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a2" source="arrive" target="gen">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a3" source="arrive" target="req">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a5" source="route_main" target="req_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a8" source="enqueue_main" target="queue_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a10" source="reject_main" target="rejected_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a13" source="start_main" target="slots_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a14" source="start_main" target="thread_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a17" source="compute_main" target="cores_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a18" source="compute_main" target="computed_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a21" source="save_main" target="db">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a22" source="save_main" target="threads_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a23" source="save_main" target="done_main">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a25" source="route_aux" target="req_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a28" source="enqueue_aux" target="queue_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a30" source="reject_aux" target="rejected_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a33" source="start_aux" target="slots_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a34" source="start_aux" target="thread_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a37" source="compute_aux" target="cores_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a38" source="compute_aux" target="computed_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a41" source="save_aux" target="db">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a42" source="save_aux" target="threads_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a43" source="save_aux" target="done_aux">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.8.1">
+      <petriObjectLinks/>
+    </toolspecific>
+  </net>
+</pnml>

@@ -1,0 +1,763 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Minibus" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>Minibus</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Free elements</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.8.1">
+        <petriObject contentVisible="true" index="0" modelId="free" name="Free elements" priority="0" x="0" y="0"/>
+      </toolspecific>
+      <place id="queue1">
+        <name>
+          <text>черга на зупинці 1</text>
+        </name>
+        <graphics>
+          <position x="300" y="0"/>
+        </graphics>
+      </place>
+      <place id="came1">
+        <name>
+          <text>пасажир прийшов на 1</text>
+        </name>
+        <graphics>
+          <position x="0" y="0"/>
+        </graphics>
+      </place>
+      <place id="gen1">
+        <name>
+          <text>генератор 1</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="-300" y="0"/>
+        </graphics>
+      </place>
+      <place id="lost1">
+        <name>
+          <text>пішли з зупинки 1</text>
+        </name>
+        <graphics>
+          <position x="0" y="300"/>
+        </graphics>
+      </place>
+      <place id="queue2">
+        <name>
+          <text>черга на зупинці 2</text>
+        </name>
+        <graphics>
+          <position x="1500" y="0"/>
+        </graphics>
+      </place>
+      <place id="came2">
+        <name>
+          <text>пасажир прийшов на 2</text>
+        </name>
+        <graphics>
+          <position x="1800" y="0"/>
+        </graphics>
+      </place>
+      <place id="gen2">
+        <name>
+          <text>генератор 2</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="2100" y="0"/>
+        </graphics>
+      </place>
+      <place id="lost2">
+        <name>
+          <text>пішли з зупинки 2</text>
+        </name>
+        <graphics>
+          <position x="1800" y="300"/>
+        </graphics>
+      </place>
+      <place id="seatsA">
+        <name>
+          <text>вільні місця A</text>
+        </name>
+        <initialMarking>
+          <text>25</text>
+        </initialMarking>
+        <graphics>
+          <position x="900" y="-120"/>
+        </graphics>
+      </place>
+      <place id="inA">
+        <name>
+          <text>пасажири в A</text>
+        </name>
+        <graphics>
+          <position x="900" y="-270"/>
+        </graphics>
+      </place>
+      <place id="paidA">
+        <name>
+          <text>перевезено A</text>
+        </name>
+        <graphics>
+          <position x="900" y="-720"/>
+        </graphics>
+      </place>
+      <place id="atA1">
+        <name>
+          <text>A на зупинці 1</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="300" y="-300"/>
+        </graphics>
+      </place>
+      <place id="arrA2">
+        <name>
+          <text>A прибув на 2</text>
+        </name>
+        <graphics>
+          <position x="1200" y="-440"/>
+        </graphics>
+      </place>
+      <place id="atA2">
+        <name>
+          <text>A на зупинці 2</text>
+        </name>
+        <graphics>
+          <position x="1500" y="-300"/>
+        </graphics>
+      </place>
+      <place id="arrA1">
+        <name>
+          <text>A прибув на 1</text>
+        </name>
+        <graphics>
+          <position x="600" y="-590"/>
+        </graphics>
+      </place>
+      <place id="seatsB">
+        <name>
+          <text>вільні місця B</text>
+        </name>
+        <initialMarking>
+          <text>25</text>
+        </initialMarking>
+        <graphics>
+          <position x="900" y="120"/>
+        </graphics>
+      </place>
+      <place id="inB">
+        <name>
+          <text>пасажири в B</text>
+        </name>
+        <graphics>
+          <position x="900" y="270"/>
+        </graphics>
+      </place>
+      <place id="paidB">
+        <name>
+          <text>перевезено B</text>
+        </name>
+        <graphics>
+          <position x="900" y="720"/>
+        </graphics>
+      </place>
+      <place id="atB1">
+        <name>
+          <text>B на зупинці 1</text>
+        </name>
+        <graphics>
+          <position x="300" y="300"/>
+        </graphics>
+      </place>
+      <place id="arrB2">
+        <name>
+          <text>B прибув на 2</text>
+        </name>
+        <graphics>
+          <position x="1200" y="440"/>
+        </graphics>
+      </place>
+      <place id="atB2">
+        <name>
+          <text>B на зупинці 2</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1500" y="300"/>
+        </graphics>
+      </place>
+      <place id="arrB1">
+        <name>
+          <text>B прибув на 1</text>
+        </name>
+        <graphics>
+          <position x="600" y="590"/>
+        </graphics>
+      </place>
+      <transition id="join1">
+        <name>
+          <text>у чергу 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+        </toolspecific>
+        <graphics>
+          <position x="151" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="arrive1">
+        <name>
+          <text>прихід на 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>0.5</timeDelay>
+          <delayMeanValue>0.5</delayMeanValue>
+          <standardDeviation>0.2</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="-150" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="reject1">
+        <name>
+          <text>відмова на 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>2</priority>
+        </toolspecific>
+        <graphics>
+          <position x="1" y="150"/>
+        </graphics>
+      </transition>
+      <transition id="join2">
+        <name>
+          <text>у чергу 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>1</priority>
+        </toolspecific>
+        <graphics>
+          <position x="1651" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="arrive2">
+        <name>
+          <text>прихід на 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>0.5</timeDelay>
+          <delayMeanValue>0.5</delayMeanValue>
+          <standardDeviation>0.2</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1950" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="reject2">
+        <name>
+          <text>відмова на 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>2</priority>
+        </toolspecific>
+        <graphics>
+          <position x="1801" y="150"/>
+        </graphics>
+      </transition>
+      <transition id="boardA1">
+        <name>
+          <text>посадка в A на 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>4</priority>
+        </toolspecific>
+        <graphics>
+          <position x="452" y="-150"/>
+        </graphics>
+      </transition>
+      <transition id="departA1">
+        <name>
+          <text>рейс A 1-2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>20.0</timeDelay>
+          <delayMeanValue>20.0</delayMeanValue>
+          <standardDeviation>5.0</standardDeviation>
+          <priority>5</priority>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="603" y="-440"/>
+        </graphics>
+      </transition>
+      <transition id="unloadA2">
+        <name>
+          <text>висадка A на 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1350" y="-440"/>
+        </graphics>
+      </transition>
+      <transition id="boardA2">
+        <name>
+          <text>посадка в A на 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>4</priority>
+        </toolspecific>
+        <graphics>
+          <position x="1352" y="-150"/>
+        </graphics>
+      </transition>
+      <transition id="departA2">
+        <name>
+          <text>рейс A 2-1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>20.0</timeDelay>
+          <delayMeanValue>20.0</delayMeanValue>
+          <standardDeviation>5.0</standardDeviation>
+          <priority>5</priority>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1203" y="-590"/>
+        </graphics>
+      </transition>
+      <transition id="unloadA1">
+        <name>
+          <text>висадка A на 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="450" y="-590"/>
+        </graphics>
+      </transition>
+      <transition id="boardB1">
+        <name>
+          <text>посадка в B на 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>3</priority>
+        </toolspecific>
+        <graphics>
+          <position x="452" y="150"/>
+        </graphics>
+      </transition>
+      <transition id="departB1">
+        <name>
+          <text>рейс B 1-2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>30.0</timeDelay>
+          <delayMeanValue>30.0</delayMeanValue>
+          <standardDeviation>5.0</standardDeviation>
+          <priority>5</priority>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="603" y="440"/>
+        </graphics>
+      </transition>
+      <transition id="unloadB2">
+        <name>
+          <text>висадка B на 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1350" y="440"/>
+        </graphics>
+      </transition>
+      <transition id="boardB2">
+        <name>
+          <text>посадка в B на 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <priority>3</priority>
+        </toolspecific>
+        <graphics>
+          <position x="1352" y="150"/>
+        </graphics>
+      </transition>
+      <transition id="departB2">
+        <name>
+          <text>рейс B 2-1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>30.0</timeDelay>
+          <delayMeanValue>30.0</delayMeanValue>
+          <standardDeviation>5.0</standardDeviation>
+          <priority>5</priority>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1203" y="590"/>
+        </graphics>
+      </transition>
+      <transition id="unloadB1">
+        <name>
+          <text>висадка B на 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+          <standardDeviation>1.0</standardDeviation>
+          <distribution>unif</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="450" y="590"/>
+        </graphics>
+      </transition>
+      <arc id="a1" source="gen1" target="arrive1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a4" source="came1" target="join1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a6" source="came1" target="reject1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a7" source="queue1" target="reject1">
+        <inscription>
+          <text>30</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a9" source="gen2" target="arrive2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a12" source="came2" target="join2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a14" source="came2" target="reject2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a15" source="queue2" target="reject2">
+        <inscription>
+          <text>30</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a17" source="queue1" target="boardA1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a18" source="seatsA" target="boardA1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a19" source="atA1" target="boardA1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a21" source="atA1" target="departA1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a22" source="inA" target="departA1">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a25" source="arrA2" target="unloadA2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a28" source="queue2" target="boardA2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a29" source="seatsA" target="boardA2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a30" source="atA2" target="boardA2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a32" source="atA2" target="departA2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a33" source="inA" target="departA2">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a36" source="arrA1" target="unloadA1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a39" source="queue1" target="boardB1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a40" source="seatsB" target="boardB1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a41" source="atB1" target="boardB1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a43" source="atB1" target="departB1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a44" source="inB" target="departB1">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a47" source="arrB2" target="unloadB2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a50" source="queue2" target="boardB2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a51" source="seatsB" target="boardB2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a52" source="atB2" target="boardB2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <informational>true</informational>
+        </toolspecific>
+      </arc>
+      <arc id="a54" source="atB2" target="departB2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a55" source="inB" target="departB2">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a58" source="arrB1" target="unloadB1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a2" source="arrive1" target="gen1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a3" source="arrive1" target="came1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a5" source="join1" target="queue1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a8" source="reject1" target="lost1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a10" source="arrive2" target="gen2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a11" source="arrive2" target="came2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a13" source="join2" target="queue2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a16" source="reject2" target="lost2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a20" source="boardA1" target="inA">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a23" source="departA1" target="arrA2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a24" source="departA1" target="paidA">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a26" source="unloadA2" target="atA2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a27" source="unloadA2" target="seatsA">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a31" source="boardA2" target="inA">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a34" source="departA2" target="arrA1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a35" source="departA2" target="paidA">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a37" source="unloadA1" target="atA1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a38" source="unloadA1" target="seatsA">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a42" source="boardB1" target="inB">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a45" source="departB1" target="arrB2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a46" source="departB1" target="paidB">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a48" source="unloadB2" target="atB2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a49" source="unloadB2" target="seatsB">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a53" source="boardB2" target="inB">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a56" source="departB2" target="arrB1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a57" source="departB2" target="paidB">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+      <arc id="a59" source="unloadB1" target="atB1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a60" source="unloadB1" target="seatsB">
+        <inscription>
+          <text>25</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.8.1">
+      <petriObjectLinks/>
+    </toolspecific>
+  </net>
+</pnml>

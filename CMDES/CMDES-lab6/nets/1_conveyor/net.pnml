@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<pnml xmlns="http://www.pnml.org/version-2009/grammar/pnml">
+  <net id="Conveyor" type="http://www.pnml.org/version-2009/grammar/ptnet">
+    <name>
+      <text>Conveyor</text>
+    </name>
+    <page id="object0">
+      <name>
+        <text>Free elements</text>
+      </name>
+      <toolspecific tool="PetriObjModel" version="2.8.1">
+        <petriObject contentVisible="true" index="0" modelId="free" name="Free elements" priority="0" x="0" y="0"/>
+      </toolspecific>
+      <place id="gen">
+        <name>
+          <text>генератор</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="-420" y="0"/>
+        </graphics>
+      </place>
+      <place id="at1">
+        <name>
+          <text>біля пристрою 1</text>
+        </name>
+        <graphics>
+          <position x="0" y="0"/>
+        </graphics>
+      </place>
+      <place id="free1">
+        <name>
+          <text>пристрій 1 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="120" y="180"/>
+        </graphics>
+      </place>
+      <place id="at2">
+        <name>
+          <text>біля пристрою 2</text>
+        </name>
+        <graphics>
+          <position x="300" y="0"/>
+        </graphics>
+      </place>
+      <place id="free2">
+        <name>
+          <text>пристрій 2 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="420" y="180"/>
+        </graphics>
+      </place>
+      <place id="at3">
+        <name>
+          <text>біля пристрою 3</text>
+        </name>
+        <graphics>
+          <position x="600" y="0"/>
+        </graphics>
+      </place>
+      <place id="free3">
+        <name>
+          <text>пристрій 3 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="720" y="180"/>
+        </graphics>
+      </place>
+      <place id="at4">
+        <name>
+          <text>біля пристрою 4</text>
+        </name>
+        <graphics>
+          <position x="900" y="0"/>
+        </graphics>
+      </place>
+      <place id="free4">
+        <name>
+          <text>пристрій 4 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1020" y="180"/>
+        </graphics>
+      </place>
+      <place id="at5">
+        <name>
+          <text>біля пристрою 5</text>
+        </name>
+        <graphics>
+          <position x="1200" y="0"/>
+        </graphics>
+      </place>
+      <place id="free5">
+        <name>
+          <text>пристрій 5 вільний</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+        <graphics>
+          <position x="1320" y="180"/>
+        </graphics>
+      </place>
+      <place id="done">
+        <name>
+          <text>оброблено</text>
+        </name>
+        <graphics>
+          <position x="750" y="400"/>
+        </graphics>
+      </place>
+      <transition id="arrive">
+        <name>
+          <text>надходження</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>0.25</timeDelay>
+          <delayMeanValue>0.25</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="-260" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="proc1">
+        <name>
+          <text>обробка 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1" y="180"/>
+        </graphics>
+      </transition>
+      <transition id="move1">
+        <name>
+          <text>конвеєр 1-2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="150" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="proc2">
+        <name>
+          <text>обробка 2</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="301" y="180"/>
+        </graphics>
+      </transition>
+      <transition id="move2">
+        <name>
+          <text>конвеєр 2-3</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="450" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="proc3">
+        <name>
+          <text>обробка 3</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="601" y="180"/>
+        </graphics>
+      </transition>
+      <transition id="move3">
+        <name>
+          <text>конвеєр 3-4</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="750" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="proc4">
+        <name>
+          <text>обробка 4</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="901" y="180"/>
+        </graphics>
+      </transition>
+      <transition id="move4">
+        <name>
+          <text>конвеєр 4-5</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="1050" y="0"/>
+        </graphics>
+      </transition>
+      <transition id="proc5">
+        <name>
+          <text>обробка 5</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>1.0</timeDelay>
+          <delayMeanValue>1.0</delayMeanValue>
+          <priority>1</priority>
+          <distribution>exp</distribution>
+        </toolspecific>
+        <graphics>
+          <position x="1201" y="180"/>
+        </graphics>
+      </transition>
+      <transition id="back">
+        <name>
+          <text>повернення до 1</text>
+        </name>
+        <toolspecific tool="PetriObjModel" version="2.8.1">
+          <timeDelay>5.0</timeDelay>
+          <delayMeanValue>5.0</delayMeanValue>
+        </toolspecific>
+        <graphics>
+          <position x="600" y="-170"/>
+        </graphics>
+      </transition>
+      <arc id="a1" source="gen" target="arrive">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a4" source="at1" target="proc1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a5" source="free1" target="proc1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a8" source="at1" target="move1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a10" source="at2" target="proc2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a11" source="free2" target="proc2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a14" source="at2" target="move2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a16" source="at3" target="proc3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a17" source="free3" target="proc3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a20" source="at3" target="move3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a22" source="at4" target="proc4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a23" source="free4" target="proc4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a26" source="at4" target="move4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a28" source="at5" target="proc5">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a29" source="free5" target="proc5">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a32" source="at5" target="back">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a2" source="arrive" target="gen">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a3" source="arrive" target="at1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a6" source="proc1" target="free1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a7" source="proc1" target="done">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a9" source="move1" target="at2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a12" source="proc2" target="free2">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a13" source="proc2" target="done">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a15" source="move2" target="at3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a18" source="proc3" target="free3">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a19" source="proc3" target="done">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a21" source="move3" target="at4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a24" source="proc4" target="free4">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a25" source="proc4" target="done">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a27" source="move4" target="at5">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a30" source="proc5" target="free5">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a31" source="proc5" target="done">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+      <arc id="a33" source="back" target="at1">
+        <inscription>
+          <text>1</text>
+        </inscription>
+      </arc>
+    </page>
+    <toolspecific tool="PetriObjModel" version="2.8.1">
+      <petriObjectLinks/>
+    </toolspecific>
+  </net>
+</pnml>
